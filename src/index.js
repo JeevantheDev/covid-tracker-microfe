@@ -13,6 +13,6 @@ window.unmountCovidTracker = containerId => {
   ReactDOM.unmountComponentAtNode(document.getElementById(containerId));
 };
 
-if (!document.getElementById('Covid-tracker-container')) {
+if (!document.getElementById('CovidTracker-container')) {
   ReactDOM.render(<App />, document.getElementById('root'));
 }
