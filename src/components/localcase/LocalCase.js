@@ -1,11 +1,10 @@
 import React,{useState} from 'react'
-import { Container, Form,Row,Col, Button, Table, Card } from 'react-bootstrap'
+import { Container, Form,Row,Col, Button, Card } from 'react-bootstrap'
 import axios from 'axios'
 function LocalCase() {
     const [stateName, setStateName] = useState('')
     const [districtName, setDistrictName] = useState('')
     const [post, setPost] = useState({})
-    const [error, setError] = useState('')
     const submitHandler=e=>{
         e.preventDefault()
         console.log(stateName)
@@ -16,8 +15,7 @@ function LocalCase() {
                 setPost(response.data[stateName]["districtData"][districtName])
             })
             .catch(error=>{
-                setPost({})
-                setError('Data is Incorrect')
+                console.log(error)
             })
     }
     return (

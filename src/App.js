@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar } from 'react-bootstrap';
 import LocalCase from './components/localcase/LocalCase';
-import LocalCaseOne from './components/localcase/LocalCaseOne';
+
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         </Navbar>
         <br/>
         <LocalCase/>
-        {/* <LocalCaseOne/> */}
+    
     </div>
   );
 }
