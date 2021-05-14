@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar } from 'react-bootstrap';
-import LocalCase from './components/localcase/LocalCase';
+import GlobalCase from './components/globalcase/GlobalCase';
 
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
           <Navbar.Brand>COVID CASES</Navbar.Brand>
         </Navbar>
         <br/>
-        <LocalCase/>
+        <GlobalCase/>
     
     </div>
   );

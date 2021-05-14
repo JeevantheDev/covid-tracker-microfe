@@ -65,13 +65,6 @@ function LocalCase() {
                         <Card.Title>{post.recovered}</Card.Title>
                     </Card>
                 </Col>
-                <Col>
-                    <Card className="text-center">
-                        <Card.Header>Deceased</Card.Header>
-                        <Card.Title>{post.deceased}</Card.Title>
-                    </Card>
-                </Col>
-               
                 </Row>
                 :null}
             
