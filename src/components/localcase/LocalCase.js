@@ -2,8 +2,8 @@ import React,{useState} from 'react'
 import { Container, Form,Row,Col, Button, Card } from 'react-bootstrap'
 import axios from 'axios'
 function LocalCase() {
-    const [stateName, setStateName] = useState('')
-    const [districtName, setDistrictName] = useState('')
+    const [stateName, setStateName] = useState('');
+    const [districtName, setDistrictName] = useState('');
     const [post, setPost] = useState({})
     const submitHandler=e=>{
         e.preventDefault()
