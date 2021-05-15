@@ -1,14 +1,14 @@
 import React,{useState} from 'react'
 import { Container, Form,Row,Col, Button, Card } from 'react-bootstrap'
 import axios from 'axios'
+import style from '../components.module.css'
+
 function LocalCase() {
     const [stateName, setStateName] = useState('')
     const [districtName, setDistrictName] = useState('')
     const [post, setPost] = useState({})
     const submitHandler=e=>{
         e.preventDefault()
-        console.log(stateName)
-        console.log(districtName)
         axios.get('https://api.covid19india.org/state_district_wise.json')
             .then(response=>{
                 console.log(response.data[stateName]["districtData"][districtName])
@@ -43,30 +43,33 @@ function LocalCase() {
                 <Button type="Submit" variant="secondary" size="sm" block>Search</Button>
             </Form>
             <br/>
-
-            {post?
-                
+    
                 <Row>
                 <Col>
-                    <Card className="text-center">
+                    <Card className="text-center" bsPrefix={style.confirmCard}>
                         <Card.Header>Confirmed</Card.Header>
-                        <Card.Title>{post.confirmed}</Card.Title>
+                        <Card.Body>
+                            <Card.Title>{post.confirmed>0?post.confirmed:"--"}</Card.Title>
+                        </Card.Body>
                     </Card>
                 </Col>
                 <Col>
-                    <Card className="text-center">
-                        <Card.Header>Active</Card.Header>
-                        <Card.Title>{post.active}</Card.Title>
+                    <Card className="text-center" bsPrefix={style.deathCard}>
+                        <Card.Header>Death</Card.Header>
+                        <Card.Body>
+                            <Card.Title>{post.deceased>0?post.deceased:"--"}</Card.Title>
+                        </Card.Body>
                     </Card>
                 </Col>
                 <Col>
-                    <Card className="text-center">
+                    <Card className="text-center" bsPrefix={style.recoverCard}>
                         <Card.Header>Recovered</Card.Header>
-                        <Card.Title>{post.recovered}</Card.Title>
+                        <Card.Body>
+                            <Card.Title>{post.recovered>0?post.recovered:"--"}</Card.Title>
+                        </Card.Body>
                     </Card>
                 </Col>
                 </Row>
-                :null}
             
             </Container>
         </div>

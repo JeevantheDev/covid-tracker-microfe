@@ -1,0 +1,21 @@
+.confirmCard{
+    background-color: #ffe66d;
+    box-shadow: 14px 13px 5px -3px rgba(52,58,64,0.96);
+}
+.deathCard{
+    background-color: #ff6b6b;
+    box-shadow: 14px 13px 5px -3px rgba(52,58,64,0.96);
+}
+.recoverCard{
+    background-color: #b9e769;
+    box-shadow: 14px 13px 5px -3px rgba(52,58,64,0.96);
+}
+.confirmCard,.deathCard,.recoverCard{
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+    } 
