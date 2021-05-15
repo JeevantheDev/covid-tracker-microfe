@@ -11,7 +11,7 @@ function LocalCase() {
         e.preventDefault()
         axios.get('https://api.covid19india.org/state_district_wise.json')
             .then(response=>{
-                console.log(response.data[stateName]["districtData"][districtName])
+                console.log(Object.keys(response.data))
                 setPost(response.data[stateName]["districtData"][districtName])
             })
             .catch(error=>{
