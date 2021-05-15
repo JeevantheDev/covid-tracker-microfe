@@ -1,23 +1,52 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { Container, Form,Row,Col, Button, Card } from 'react-bootstrap'
 import axios from 'axios'
 import style from '../components.module.css'
 
 function LocalCase() {
-    const [stateName, setStateName] = useState('')
-    const [districtName, setDistrictName] = useState('')
+    const [currentState, setCurrentState] = useState();
+    const [currentDistrict, setCurrentDistrict] = useState();
+    const [stateName, setStateName] = useState()
+    const [districtName, setDistrictName] = useState()
     const [post, setPost] = useState({})
-    const submitHandler=e=>{
-        e.preventDefault()
+    useEffect(() => {
         axios.get('https://api.covid19india.org/state_district_wise.json')
             .then(response=>{
-                console.log(response.data[stateName]["districtData"][districtName])
-                setPost(response.data[stateName]["districtData"][districtName])
+                console.log(response.data)
+                setStateName(Object.keys(response.data))
             })
             .catch(error=>{
                 console.log(error)
             })
-    }
+    }, []);
+    useEffect(() => {
+        if (currentState) {
+            axios.get('https://api.covid19india.org/state_district_wise.json')
+            .then(response=>{
+                setDistrictName(Object.keys(response.data[currentState].districtData))
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+        }
+    }, [currentState])
+
+    console.log(post)
+
+    const submitHandler=e=>{
+        e.preventDefault()
+        axios.get('https://api.covid19india.org/state_district_wise.json')
+            .then(response=>{
+                const {confirmed, deceased, recovered} = response.data[currentState].districtData[currentDistrict]
+                setPost({
+                    confirmed, deceased, recovered
+                })
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+    } 
+
     return (
         <div>
             <Container>
@@ -26,17 +55,25 @@ function LocalCase() {
                 <Row>
                     <Col>
                         <Form.Control 
-                            value={stateName} 
-                            placeholder="State Name"  
-                            type="text" 
-                            onChange={(e)=>setStateName(e.target.value)}/>
+                            as="select" 
+                            onChange={(e)=>setCurrentState(e.target.value)}>
+                            {stateName && stateName.map((state) => {
+                                return (
+                                    <option key={state} value={state}>{state}</option>
+                                )
+                            })}
+                            </Form.Control>
                     </Col>
                     <Col>
                         <Form.Control 
-                            value={districtName} 
-                            placeholder="District Name"
-                            type="text"
-                            onChange={(e)=>setDistrictName(e.target.value)} />
+                            as="select"
+                            onChange={(e)=>setCurrentDistrict(e.target.value)}>
+                                {districtName && districtName.map((district) => {
+                                return (
+                                    <option key={district} value={district}>{district}</option>
+                                )
+                            })}
+                            </Form.Control>
                     </Col>
                 </Row>
                 <br/>
