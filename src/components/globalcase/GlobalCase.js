@@ -60,7 +60,7 @@ function GlobalCase() {
                 </form>
                 <br/>
                 <Row>
-                    <Col>
+                    <Col className="mb-3"  sm={4}>
                         <Card className="text-center" bsPrefix="confirmCard">
                             <Card.Header><span className="cardheader">Confirmed</span></Card.Header>
                             <Card.Body>
@@ -69,7 +69,7 @@ function GlobalCase() {
                             </Card.Body>
                         </Card>
                     </Col>
-                    <Col>
+                    <Col className="mb-3"  sm={4}>
                         <Card className="text-center" bsPrefix="deathCard">
                             <Card.Header><span className="cardheader">Death</span></Card.Header>
                             <Card.Body>
@@ -78,7 +78,7 @@ function GlobalCase() {
                             </Card.Body>
                         </Card>
                     </Col>
-                    <Col>
+                    <Col className="mb-3"  sm={4}>
                         <Card className="text-center" bsPrefix="recoverCard">
                             <Card.Header><span className="cardheader">Recovered</span></Card.Header>
                             <Card.Body>
