@@ -46,7 +46,7 @@ function GlobalCase() {
     return (
         <div>
             <Container>
-                <h6 className="text-center">GLOBAL CASE</h6>
+                <h1 className={style.subtitle}>GLOBAL CASE</h1>
                 <form>
                 <Form.Control onChange={(e) => filterByCountry(e.target.value)} as="select">
                     <option value='Global'>Global</option>
@@ -61,25 +61,25 @@ function GlobalCase() {
                 <Row>
                     <Col>
                         <Card className="text-center" bsPrefix={style.confirmCard}>
-                            <Card.Header>Confirmed</Card.Header>
+                            <Card.Header><span className={style.cardheader}>Confirmed</span></Card.Header>
                             <Card.Body>
-                                <Card.Title>{currentCase.totalConfirmed > 0 ? currentCase.totalConfirmed : <Spinner animation="border" variant="dark" />}</Card.Title>
+                                <Card.Title><span className={style.carddata}>{currentCase.totalConfirmed > 0 ? currentCase.totalConfirmed : <Spinner animation="border" variant="dark" />}</span></Card.Title>
                             </Card.Body>
                         </Card>
                     </Col>
                     <Col>
                         <Card className="text-center" bsPrefix={style.deathCard}>
-                            <Card.Header>Death</Card.Header>
+                            <Card.Header><span className={style.cardheader}>Death</span></Card.Header>
                             <Card.Body>
-                                <Card.Title>{currentCase.totalDeath > 0 ? currentCase.totalDeath : <Spinner animation="border" variant="dark" />}</Card.Title>
+                                <Card.Title><span className={style.carddata}>{currentCase.totalDeath > 0 ? currentCase.totalDeath : <Spinner animation="border" variant="dark" />}</span></Card.Title>
                             </Card.Body>
                         </Card>
                     </Col>
                     <Col>
                         <Card className="text-center" bsPrefix={style.recoverCard}>
-                            <Card.Header>Recovered</Card.Header>
+                            <Card.Header><span className={style.cardheader}>Recovered</span></Card.Header>
                             <Card.Body>
-                                <Card.Title>{currentCase.totalRecovered > 0 ? currentCase.totalRecovered : <Spinner animation="border" variant="dark" />}</Card.Title>
+                                <Card.Title><span className={style.carddata}>{currentCase.totalRecovered > 0 ? currentCase.totalRecovered : <Spinner animation="border" variant="dark" />}</span></Card.Title>
                             </Card.Body>
                         </Card>
                     </Col>

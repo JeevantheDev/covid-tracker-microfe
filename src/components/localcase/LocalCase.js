@@ -50,7 +50,7 @@ function LocalCase() {
     return (
         <div>
             <Container>
-            <h6 className="text-center">LOCAL CASE</h6>
+            <h1 className={style.subtitle}>LOCAL CASE</h1>
             <Form onSubmit={submitHandler}>
                 <Row>
                     <Col>
@@ -84,25 +84,25 @@ function LocalCase() {
                 <Row>
                 <Col>
                     <Card className="text-center" bsPrefix={style.confirmCard}>
-                        <Card.Header>Confirmed</Card.Header>
+                        <Card.Header><span className={style.cardheader}>Confirmed</span></Card.Header>
                         <Card.Body>
-                            <Card.Title>{post.confirmed>0?post.confirmed:"--"}</Card.Title>
+                            <Card.Title><span className={style.carddata}>{post.confirmed>0?post.confirmed:"--"}</span></Card.Title>
                         </Card.Body>
                     </Card>
                 </Col>
                 <Col>
                     <Card className="text-center" bsPrefix={style.deathCard}>
-                        <Card.Header>Death</Card.Header>
+                        <Card.Header><span className={style.cardheader}>Death</span></Card.Header>
                         <Card.Body>
-                            <Card.Title>{post.deceased>0?post.deceased:"--"}</Card.Title>
+                            <Card.Title><span className={style.carddata}>{post.deceased>0?post.deceased:"--"}</span></Card.Title>
                         </Card.Body>
                     </Card>
                 </Col>
                 <Col>
                     <Card className="text-center" bsPrefix={style.recoverCard}>
-                        <Card.Header>Recovered</Card.Header>
+                        <Card.Header><span className={style.cardheader}>Recovered</span></Card.Header>
                         <Card.Body>
-                            <Card.Title>{post.recovered>0?post.recovered:"--"}</Card.Title>
+                            <Card.Title><span className={style.carddata}>{post.recovered>0?post.recovered:"--"}</span></Card.Title>
                         </Card.Body>
                     </Card>
                 </Col>
