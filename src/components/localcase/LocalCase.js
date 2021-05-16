@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import { Container, Form,Row,Col, Button, Card } from 'react-bootstrap'
 import axios from 'axios'
-import style from '../components.module.css'
+import '../components.module.css'
 import { Bar } from 'react-chartjs-2';
 
 const options = {
@@ -75,7 +75,7 @@ function LocalCase() {
     return (
         <div>
             <Container>
-            <h1 className={style.subtitle}>LOCAL CASE - INDIA</h1>
+            <h1 className="subtitle">LOCAL CASE - INDIA</h1>
             <Form onSubmit={submitHandler}>
                 <Row>
                     <Col>
@@ -108,10 +108,10 @@ function LocalCase() {
     
                 <Row>
                 <Col>
-                    <Card className="text-center" bsPrefix={style.confirmCard}>
-                        <Card.Header><span className={style.cardheader}>Confirmed</span></Card.Header>
+                    <Card className="text-center" bsPrefix="confirmCard">
+                        <Card.Header><span className="cardheader">Confirmed</span></Card.Header>
                         <Card.Body>
-                            <Card.Title><span className={style.carddata}>{post.confirmed>0?post.confirmed:"--"}</span></Card.Title>
+                            <Card.Title><span className="carddata">{post.confirmed>0?post.confirmed:"--"}</span></Card.Title>
                             {post.confirmed > 0 && <Bar options={options} data={{
                                     labels: ['Covid Confirmed'],
                                     datasets: [
@@ -132,10 +132,10 @@ function LocalCase() {
                     </Card>
                 </Col>
                 <Col>
-                    <Card className="text-center" bsPrefix={style.deathCard}>
-                        <Card.Header><span className={style.cardheader}>Death</span></Card.Header>
+                    <Card className="text-center" bsPrefix="deathCard">
+                        <Card.Header><span className="cardheader">Death</span></Card.Header>
                         <Card.Body>
-                            <Card.Title><span className={style.carddata}>{post.deceased>0?post.deceased:"--"}</span></Card.Title>
+                            <Card.Title><span className="carddata">{post.deceased>0?post.deceased:"--"}</span></Card.Title>
                             {post.deceased > 0 && <Bar options={options} data={{
                                     labels: ['Covid Death'],
                                     datasets: [
@@ -156,10 +156,10 @@ function LocalCase() {
                     </Card>
                 </Col>
                 <Col>
-                    <Card className="text-center" bsPrefix={style.recoverCard}>
-                        <Card.Header><span className={style.cardheader}>Recovered</span></Card.Header>
+                    <Card className="text-center" bsPrefix="recoverCard">
+                        <Card.Header><span className="cardheader">Recovered</span></Card.Header>
                         <Card.Body>
-                            <Card.Title><span className={style.carddata}>{post.recovered>0?post.recovered:"--"}</span></Card.Title>
+                            <Card.Title><span className="carddata">{post.recovered>0?post.recovered:"--"}</span></Card.Title>
                             {post.recovered > 0 && <Bar options={options} data={{
                                     labels: ['Covid Recovered'],
                                     datasets: [

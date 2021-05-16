@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 import {Container, Form, Row,Col,Card,Spinner} from 'react-bootstrap';
 import { Bar } from 'react-chartjs-2';
-import style from '../components.module.css';
+import '../components.module.css';
 
 const options = {
     scales: {
@@ -74,7 +74,7 @@ function GlobalCase() {
     return (
         <div>
             <Container>
-                <h1 className={style.subtitle}>GLOBAL CASE</h1>
+                <h1 className="subtitle">GLOBAL CASE</h1>
                 <form>
                 <Form.Control onChange={(e) => filterByCountry(e.target.value)} as="select">
                     <option value='Global'>Global</option>
@@ -88,10 +88,10 @@ function GlobalCase() {
                 <br/>
                 <Row>
                     <Col>
-                        <Card className="text-center" bsPrefix={style.confirmCard}>
-                            <Card.Header><span className={style.cardheader}>Confirmed</span></Card.Header>
+                        <Card className="text-center" bsPrefix="confirmCard">
+                            <Card.Header><span className="cardheader">Confirmed</span></Card.Header>
                             <Card.Body>
-                                <Card.Title><span className={style.carddata}>{currentCase.totalConfirmed > 0 ? currentCase.totalConfirmed : <Spinner animation="border" variant="dark" />}</span></Card.Title>
+                                <Card.Title><span className="carddata">{currentCase.totalConfirmed > 0 ? currentCase.totalConfirmed : <Spinner animation="border" variant="dark" />}</span></Card.Title>
                                 {currentCase.totalConfirmed > 0 && <Bar options={options} data={{
                                     labels: ['Covid Confirmed'],
                                     datasets: [
@@ -112,10 +112,10 @@ function GlobalCase() {
                         </Card>
                     </Col>
                     <Col>
-                        <Card className="text-center" bsPrefix={style.deathCard}>
-                            <Card.Header><span className={style.cardheader}>Death</span></Card.Header>
+                        <Card className="text-center" bsPrefix="deathCard">
+                            <Card.Header><span className="cardheader">Death</span></Card.Header>
                             <Card.Body>
-                                <Card.Title><span className={style.carddata}>{currentCase.totalDeath > 0 ? currentCase.totalDeath : <Spinner animation="border" variant="dark" />}</span></Card.Title>
+                                <Card.Title><span className="carddata">{currentCase.totalDeath > 0 ? currentCase.totalDeath : <Spinner animation="border" variant="dark" />}</span></Card.Title>
                                 {currentCase.totalDeath > 0 && <Bar options={options} data={{
                                     labels: ['Covid Death'],
                                     datasets: [
@@ -136,10 +136,10 @@ function GlobalCase() {
                         </Card>
                     </Col>
                     <Col>
-                        <Card className="text-center" bsPrefix={style.recoverCard}>
-                            <Card.Header><span className={style.cardheader}>Recovered</span></Card.Header>
+                        <Card className="text-center" bsPrefix="recoverCard">
+                            <Card.Header><span className="cardheader">Recovered</span></Card.Header>
                             <Card.Body>
-                                <Card.Title><span className={style.carddata}>{currentCase.totalRecovered > 0 ? currentCase.totalRecovered : <Spinner animation="border" variant="dark" />}</span></Card.Title>
+                                <Card.Title><span className="carddata">{currentCase.totalRecovered > 0 ? currentCase.totalRecovered : <Spinner animation="border" variant="dark" />}</span></Card.Title>
                                 {currentCase.totalRecovered > 0 && <Bar options={options} data={{
                                     labels: ['Covid Recovered'],
                                     datasets: [
