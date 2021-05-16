@@ -1,47 +1,26 @@
-import React from 'react';
-import {useRoutes} from 'hookrouter';
+import React, {useState} from 'react';
 import {Nav } from 'react-bootstrap';
 import GlobalCase from './components/globalcase/GlobalCase';
 import LocalCase from './components/localcase/LocalCase';
-const routes = {
-  "/globalcase": () => <GlobalCase />,
-  "/localcase": () => <LocalCase />,
-};
+
 function App() {
-  const routeResult = useRoutes(routes);
+  const [currentPage, setCurrentPage] = useState('GlobalCase')
   return (
     <div className="App">
         <Nav justify variant="tabs">
-          <Nav.Item>
-            <Nav.Link href='globalcase'>GLOBAL CASES</Nav.Link>
+          <Nav.Item onClick={() => {
+            setCurrentPage('GlobalCase')
+          }}>
+            <Nav.Link eventKey='Globalcase'>GLOBAL CASES</Nav.Link>
           </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href='localcase'>LOCAL CASES</Nav.Link>
-          </Nav.Item>
-        </Nav>
-        {routeResult}
-        {/* <Router>
-        <Nav justify variant="tabs" defaultActiveKey="/globalcase" className={style.datatab}>
-          <Nav.Item className={style.globalcasetab}>
-            <Nav.Link to='' activeClassName="is-active">Global Case</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link to='localcase' activeClassName="is-active">Local Case</Nav.Link>
+          <Nav.Item onClick={() => {
+            setCurrentPage('LocalCase')
+          }}>
+            <Nav.Link eventKey='Localcase'>LOCAL CASES</Nav.Link>
           </Nav.Item>
         </Nav>
-
-        <Switch>
-
-          <Route path="/localcase">
-            <LocalCase/>
-          </Route>
-          <Route path="">
-              <GlobalCase/>
-          </Route> 
-        </Switch>
-        </Router> */}
-
-  
+        {currentPage === 'GlobalCase' && <GlobalCase />}
+        {currentPage === 'LocalCase' && <LocalCase />}  
     </div>
   );
 }

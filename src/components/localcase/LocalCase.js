@@ -2,6 +2,32 @@ import React,{useEffect, useState} from 'react'
 import { Container, Form,Row,Col, Button, Card } from 'react-bootstrap'
 import axios from 'axios'
 import style from '../components.module.css'
+import { Bar } from 'react-chartjs-2';
+
+const options = {
+    scales: {
+        yAxes: [{   
+            gridLines: {
+                display: false
+            },
+        }],
+        xAxes: [{
+            gridLines: {
+                display: false
+              }
+        }],
+    },
+    responsive: true,
+    plugins: {
+        legend: {
+            labels: {
+                font: {
+                    size: 15
+                }
+            }
+        }
+    },
+  };
 
 function LocalCase() {
     const [currentState, setCurrentState] = useState();
@@ -12,7 +38,6 @@ function LocalCase() {
     useEffect(() => {
         axios.get('https://api.covid19india.org/state_district_wise.json')
             .then(response=>{
-                console.log(response.data)
                 setStateName(Object.keys(response.data))
             })
             .catch(error=>{
@@ -31,8 +56,6 @@ function LocalCase() {
         }
     }, [currentState])
 
-    console.log(post)
-
     const submitHandler=e=>{
         e.preventDefault()
         axios.get('https://api.covid19india.org/state_district_wise.json')
@@ -47,10 +70,12 @@ function LocalCase() {
             })
     } 
 
+    const {confirmed, deceased, recovered} = post;
+
     return (
         <div>
             <Container>
-            <h1 className={style.subtitle}>LOCAL CASE</h1>
+            <h1 className={style.subtitle}>LOCAL CASE - INDIA</h1>
             <Form onSubmit={submitHandler}>
                 <Row>
                     <Col>
@@ -87,6 +112,22 @@ function LocalCase() {
                         <Card.Header><span className={style.cardheader}>Confirmed</span></Card.Header>
                         <Card.Body>
                             <Card.Title><span className={style.carddata}>{post.confirmed>0?post.confirmed:"--"}</span></Card.Title>
+                            {post.confirmed > 0 && <Bar options={options} data={{
+                                    labels: ['Covid Confirmed'],
+                                    datasets: [
+                                      {
+                                        label: 'Confirm Case',
+                                        data: [confirmed],
+                                        backgroundColor: [
+                                          '#ff6b6b',
+                                        ],
+                                        borderColor: [
+                                          '#b9e769',
+                                        ],
+                                        borderWidth: 2,
+                                      },
+                                    ],
+                                }} />}
                         </Card.Body>
                     </Card>
                 </Col>
@@ -95,6 +136,22 @@ function LocalCase() {
                         <Card.Header><span className={style.cardheader}>Death</span></Card.Header>
                         <Card.Body>
                             <Card.Title><span className={style.carddata}>{post.deceased>0?post.deceased:"--"}</span></Card.Title>
+                            {post.deceased > 0 && <Bar options={options} data={{
+                                    labels: ['Covid Death'],
+                                    datasets: [
+                                      {
+                                        label: 'Death Case',
+                                        data: [deceased],
+                                        backgroundColor: [
+                                          '#b9e769',
+                                        ],
+                                        borderColor: [
+                                          '#ffe66d',
+                                        ],
+                                        borderWidth: 2,
+                                      },
+                                    ],
+                                }} />}
                         </Card.Body>
                     </Card>
                 </Col>
@@ -103,6 +160,22 @@ function LocalCase() {
                         <Card.Header><span className={style.cardheader}>Recovered</span></Card.Header>
                         <Card.Body>
                             <Card.Title><span className={style.carddata}>{post.recovered>0?post.recovered:"--"}</span></Card.Title>
+                            {post.recovered > 0 && <Bar options={options} data={{
+                                    labels: ['Covid Recovered'],
+                                    datasets: [
+                                      {
+                                        label: 'Recover Case',
+                                        data: [recovered],
+                                        backgroundColor: [
+                                          '#ffe66d',
+                                        ],
+                                        borderColor: [
+                                          '#ff6b6b',
+                                        ],
+                                        borderWidth: 2,
+                                      },
+                                    ],
+                                }} />}   
                         </Card.Body>
                     </Card>
                 </Col>
