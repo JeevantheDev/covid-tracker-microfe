@@ -1,33 +1,7 @@
 import React,{useEffect, useState} from 'react'
-import { Container, Form,Row,Col, Button, Card } from 'react-bootstrap'
+import {  Form,Row,Col, Button, Card } from 'react-bootstrap'
 import axios from 'axios'
-import '../components.module.css'
-import { Bar } from 'react-chartjs-2';
-
-const options = {
-    scales: {
-        yAxes: [{   
-            gridLines: {
-                display: false
-            },
-        }],
-        xAxes: [{
-            gridLines: {
-                display: false
-              }
-        }],
-    },
-    responsive: true,
-    plugins: {
-        legend: {
-            labels: {
-                font: {
-                    size: 15
-                }
-            }
-        }
-    },
-  };
+import '../common.css'
 
 function LocalCase() {
     const [currentState, setCurrentState] = useState();
@@ -70,11 +44,9 @@ function LocalCase() {
             })
     } 
 
-    const {confirmed, deceased, recovered} = post;
 
     return (
         <div>
-            <Container>
             <h1 className="subtitle">LOCAL CASE - INDIA</h1>
             <Form onSubmit={submitHandler}>
                 <Row>
@@ -112,22 +84,7 @@ function LocalCase() {
                         <Card.Header><span className="cardheader">Confirmed</span></Card.Header>
                         <Card.Body>
                             <Card.Title><span className="carddata">{post.confirmed>0?post.confirmed:"--"}</span></Card.Title>
-                            {post.confirmed > 0 && <Bar options={options} data={{
-                                    labels: ['Covid Confirmed'],
-                                    datasets: [
-                                      {
-                                        label: 'Confirm Case',
-                                        data: [confirmed],
-                                        backgroundColor: [
-                                          '#ff6b6b',
-                                        ],
-                                        borderColor: [
-                                          '#b9e769',
-                                        ],
-                                        borderWidth: 2,
-                                      },
-                                    ],
-                                }} />}
+                           
                         </Card.Body>
                     </Card>
                 </Col>
@@ -136,22 +93,7 @@ function LocalCase() {
                         <Card.Header><span className="cardheader">Death</span></Card.Header>
                         <Card.Body>
                             <Card.Title><span className="carddata">{post.deceased>0?post.deceased:"--"}</span></Card.Title>
-                            {post.deceased > 0 && <Bar options={options} data={{
-                                    labels: ['Covid Death'],
-                                    datasets: [
-                                      {
-                                        label: 'Death Case',
-                                        data: [deceased],
-                                        backgroundColor: [
-                                          '#b9e769',
-                                        ],
-                                        borderColor: [
-                                          '#ffe66d',
-                                        ],
-                                        borderWidth: 2,
-                                      },
-                                    ],
-                                }} />}
+                       
                         </Card.Body>
                     </Card>
                 </Col>
@@ -160,28 +102,11 @@ function LocalCase() {
                         <Card.Header><span className="cardheader">Recovered</span></Card.Header>
                         <Card.Body>
                             <Card.Title><span className="carddata">{post.recovered>0?post.recovered:"--"}</span></Card.Title>
-                            {post.recovered > 0 && <Bar options={options} data={{
-                                    labels: ['Covid Recovered'],
-                                    datasets: [
-                                      {
-                                        label: 'Recover Case',
-                                        data: [recovered],
-                                        backgroundColor: [
-                                          '#ffe66d',
-                                        ],
-                                        borderColor: [
-                                          '#ff6b6b',
-                                        ],
-                                        borderWidth: 2,
-                                      },
-                                    ],
-                                }} />}   
+                             
                         </Card.Body>
                     </Card>
                 </Col>
                 </Row>
-            
-            </Container>
         </div>
     )
 }
