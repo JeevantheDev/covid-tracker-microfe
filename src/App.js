@@ -1,17 +1,26 @@
-import React from 'react';
-import { Navbar } from 'react-bootstrap';
+import React, {useState} from 'react';
+import {Nav } from 'react-bootstrap';
+import GlobalCase from './components/globalcase/GlobalCase';
 import LocalCase from './components/localcase/LocalCase';
 
-
 function App() {
+  const [currentPage, setCurrentPage] = useState('GlobalCase')
   return (
     <div className="App">
-        <Navbar bg="dark" variant="dark" className="text-center">
-          <Navbar.Brand>COVID CASES</Navbar.Brand>
-        </Navbar>
-        <br/>
-        <LocalCase/>
-    
+        <Nav justify variant="tabs">
+          <Nav.Item onClick={() => {
+            setCurrentPage('GlobalCase')
+          }}>
+            <Nav.Link eventKey='Globalcase'>GLOBAL CASES</Nav.Link>
+          </Nav.Item>
+          <Nav.Item onClick={() => {
+            setCurrentPage('LocalCase')
+          }}>
+            <Nav.Link eventKey='Localcase'>LOCAL CASES</Nav.Link>
+          </Nav.Item>
+        </Nav>
+        {currentPage === 'GlobalCase' && <GlobalCase />}
+        {currentPage === 'LocalCase' && <LocalCase />}  
     </div>
   );
 }
