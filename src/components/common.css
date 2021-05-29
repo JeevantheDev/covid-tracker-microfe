@@ -32,3 +32,8 @@
     font-size: 23px;
     font-weight: 400;
 }
+.mapContainer,
+.mapBox {
+  width: 100vw;
+  height: 100vh;
+}
