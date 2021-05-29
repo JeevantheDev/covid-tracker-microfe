@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/covid-tracker-microfe/static/css/main.css",
-    "main.js": "/covid-tracker-microfe/static/js/main.js",
-    "main.js.map": "/covid-tracker-microfe/static/js/main.js.map",
-    "index.html": "/covid-tracker-microfe/index.html",
-    "static/css/main.css.map": "/covid-tracker-microfe/static/css/main.css.map",
-    "static/js/main.js.LICENSE.txt": "/covid-tracker-microfe/static/js/main.js.LICENSE.txt"
+    "main.css": "/static/css/main.css",
+    "main.js": "/static/js/main.js",
+    "main.js.map": "/static/js/main.js.map",
+    "index.html": "/index.html",
+    "static/css/main.css.map": "/static/css/main.css.map",
+    "static/js/main.js.LICENSE.txt": "/static/js/main.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/css/main.css",
